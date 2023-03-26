@@ -1,8 +1,16 @@
-<script setup lang="ts"></script>
-
 <template>
-  <div class="bg-sky-700 px-4 py-2 text-white hover:bg-sky-800 sm:px-8 sm:py-3">123</div>
-  <n-button type="primary"> Primary </n-button>
+  <NConfigProvider class="h-full" :theme="应用主题" :locale="zhCN" :date-locale="dateZhCN">
+    <NaiveProvider>
+      <RouterView />
+    </NaiveProvider>
+  </NConfigProvider>
 </template>
+
+<script setup lang="ts">
+import 使用主题 from "@/状态钩子/使用_应用主题";
+import { zhCN, dateZhCN } from "naive-ui";
+
+const { 应用主题 } = 使用主题();
+</script>
 
 <style scoped></style>

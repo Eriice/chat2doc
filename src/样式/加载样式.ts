@@ -1,5 +1,6 @@
 import "./样式表/tailwind.css";
 
+import "./样式表/全局样式.css";
 // https://www.naiveui.com/zh-CN/light/docs/style-conflict
 // 插入 meta 解决样式冲突
 
