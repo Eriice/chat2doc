@@ -26,7 +26,7 @@ import MyChatTextArea from "./输入框/输入框.vue";
 import { useDebounceFn } from "@vueuse/core";
 import { 会话的状态存储 } from "@/状态存储";
 
-const { 当前会话 } = 会话的状态存储();
+// const { 当前会话 } = 会话的状态存储();
 // 记录最后滚动的位置
 const 处理滚动 = useDebounceFn(e => {
   const target = e.target as HTMLDivElement;
