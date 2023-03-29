@@ -1,5 +1,5 @@
 <template>
-  <div>这是聊天</div>
+  <div></div>
 </template>
 
 <script setup lang="ts"></script>

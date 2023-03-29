@@ -14,7 +14,7 @@ const 路由配置: RouteRecordRaw[] = [
       {
         path: "/chat/:uuid?",
         name: "Chat",
-        component: () => import("@/页面/聊天/聊天.vue")
+        component: () => import("@/页面/对话/对话.vue")
       }
     ]
   }

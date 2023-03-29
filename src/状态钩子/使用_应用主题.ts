@@ -1,9 +1,9 @@
 import { computed } from "vue";
 import { useOsTheme } from "naive-ui";
-import { 应用状态存储 } from "@/状态存储";
+import { 应用的状态存储 } from "@/状态存储";
 
 const 使用_应用主题 = () => {
-  const 状态存储 = 应用状态存储();
+  const 状态存储 = 应用的状态存储();
 
   const OsTheme = useOsTheme();
   const 应用主题 = computed(() => {
