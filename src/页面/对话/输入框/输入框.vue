@@ -2,7 +2,9 @@
   <footer class="relative px-4 py-6">
     <div class="flex items-end gap-3">
       <NInput
+        ref="输入框的引用"
         v-model:value="提示语"
+        :disabled="缓存的ai回复.状态 !== '空闲'"
         class="flex-1"
         type="textarea"
         :autosize="{
@@ -11,7 +13,7 @@
         }"
         placeholder="基本的 Textarea"
       />
-      <NButton @click="处理发送对话()">
+      <NButton type="info" :disabled="缓存的ai回复.状态 !== '空闲'" @click="处理发送对话()">
         <Icon icon="ri:send-plane-fill" class="mr-1" />
         <span>发送</span>
       </NButton>
@@ -33,14 +35,16 @@ const { 新增用户提问, 新增ai回复 } = 会话的状态存储();
 const { 缓存的ai回复 } = storeToRefs(会话的状态存储());
 
 const 处理发送对话 = async () => {
+  if (缓存的ai回复.value.状态 !== "空闲") return;
+
   新增用户提问(提示语.value);
+  缓存的ai回复.value.状态 = "等待回复";
 
   const 事件源 = new EventSource(`${侦听事件源url}?问题=${encodeURIComponent(提示语.value)}`);
   提示语.value = "";
 
   事件源.addEventListener("open", () => {
     缓存的ai回复.value.内容 = "";
-    缓存的ai回复.value.状态 = "等待回复";
   });
 
   // 监听自定义的"done" 事件

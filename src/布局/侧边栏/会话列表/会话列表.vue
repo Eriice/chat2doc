@@ -10,7 +10,7 @@
 import { 会话的状态存储 } from "@/状态存储";
 import { NScrollbar } from "naive-ui";
 import { storeToRefs } from "pinia";
-import MyChatListItem from "./对话列表项.vue";
+import MyChatListItem from "./会话列表项.vue";
 
 const 状态存储 = 会话的状态存储();
 const { 会话列表 } = storeToRefs(状态存储);
@@ -32,13 +32,3 @@ const { 会话列表 } = storeToRefs(状态存储);
   transform: translateY(30px);
 }
 </style>
-
-<!-- <Icon icon="ri:file-copy-2-line" />
-        <Icon icon="ri:inbox-line" class="mb-2 text-cyan-400" />
-
-        <Icon icon="ri:save-line" />
-        <Icon icon="ic:outline-code-off" />
-        <Icon icon="ri:restart-line" />
-        <Icon icon="ri:more-2-fill" />
-        <Icon icon="ri:delete-bin-line" />
-        <Icon icon="ic:outline-code" /> -->

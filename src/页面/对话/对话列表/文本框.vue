@@ -1,5 +1,5 @@
 <template>
-  <div class="min-w-[20px] rounded-md py-2 px-3 text-black">
+  <div class="min-w-[20px] rounded-md text-black">
     <div ref="textRef" class="break-words leading-relaxed">
       <div class="markdown-body" v-html="markdown内容"></div>
     </div>

@@ -1,7 +1,7 @@
 <template>
   <div
     :class="{ active: 会话.id === 当前会话id }"
-    class="flex cursor-pointer items-center justify-between gap-3 rounded-md border p-3"
+    class="flex cursor-pointer items-center justify-between gap-3 rounded-lg border border-gray-300 p-3 text-gray-300"
     @click="处理切换(会话.id)"
   >
     <Icon icon="ri:message-3-line" />
@@ -9,14 +9,14 @@
       <span>{{ 会话.标题 }}</span>
     </div>
     <div class="flex gap-2">
-      <div
-        class="flex h-6 w-6 items-center justify-center rounded shadow hover:bg-gray-200"
+      <!-- <div
+        class="flex h-6 w-6 items-center justify-center rounded shadow hover:bg-blue-600"
         @click.stop="处理编辑(会话.id)"
       >
         <Icon icon="ri:edit-line" />
-      </div>
+      </div> -->
       <div
-        class="flex h-6 w-6 items-center justify-center rounded shadow hover:bg-gray-200"
+        class="flex h-6 w-6 items-center justify-center rounded shadow hover:bg-blue-600"
         @click.stop="处理删除(会话.id)"
       >
         <Icon icon="ri:delete-bin-line" />
@@ -56,6 +56,6 @@ const 处理编辑 = (id: string) => {};
 
 <style scoped>
 .active {
-  @apply border-green-600 bg-gray-50 text-green-600;
+  @apply border  border-blue-500 bg-blue-500 text-white;
 }
 </style>
