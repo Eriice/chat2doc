@@ -6,7 +6,6 @@
 </template>
 
 <script setup lang="ts">
-import { Icon } from "@iconify/vue";
 import { 会话的状态存储 } from "@/状态存储";
 import { storeToRefs } from "pinia";
 import MyChatListItem from "./对话列表项.vue";
@@ -36,9 +35,6 @@ watch(缓存的ai回复.value, () => {
 watch(
   () => 缓存的ai回复.value.状态,
   () => {
-    console.log("状态变化了");
-    console.log("缓存ai回复的引用.value", 缓存ai回复的引用.value);
-
     缓存ai回复的引用.value?.$el.scrollIntoView({
       behavior: "smooth"
     });

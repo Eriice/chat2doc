@@ -4,10 +4,15 @@
       <NLayout has-sider class="h-full">
         <MySidebar />
         <NLayout class="h-full">
-          <NLayoutContent class="h-full">
-            <RouterView v-slot="{ Component, route }">
-              <component :is="Component" :key="route.fullPath" />
-            </RouterView>
+          <NLayoutContent :class="容器样式">
+            <div class="flex h-full flex-col">
+              <MyStickyHeader />
+              <div class="flex-1 overflow-hidden">
+                <RouterView v-slot="{ Component, route }" class="flex-1">
+                  <component :is="Component" :key="route.fullPath" />
+                </RouterView>
+              </div>
+            </div>
           </NLayoutContent>
         </NLayout>
       </NLayout>
@@ -16,12 +21,16 @@
 </template>
 
 <script setup lang="ts">
-import 使用_应用尺寸 from "@/状态钩子/使用_应用尺寸";
 import { NLayout, NLayoutContent } from "naive-ui";
+import MyStickyHeader from "./悬浮标题/悬浮标题.vue";
 import MySidebar from "./侧边栏/侧边栏.vue";
-
+import 使用_应用尺寸 from "@/状态钩子/使用_应用尺寸";
+import { computed } from "vue";
 const { 是否手机 } = 使用_应用尺寸();
-console.log("是否手机", 是否手机);
+
+const 容器样式 = computed(() => {
+  return ["h-full", { "pl-[260px]": !是否手机.value }];
+});
 </script>
 
 <style scoped>

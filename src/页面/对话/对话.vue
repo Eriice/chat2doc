@@ -1,9 +1,7 @@
 <template>
   <div class="flex h-full w-full flex-col">
-    <!-- <MyChatTips /> -->
-    <MyStickyHeader />
     <div class="flex-1 overflow-hidden">
-      <div ref="滚动的引用" class="scroll-content h-full overflow-hidden overflow-y-auto">
+      <div class="scroll-content h-full overflow-hidden overflow-y-auto">
         <MyChatList />
       </div>
     </div>
@@ -16,7 +14,6 @@
 <script setup lang="ts">
 import MyChatList from "./对话列表/对话列表.vue";
 import MyChatTextArea from "./输入框/输入框.vue";
-import MyStickyHeader from "./悬浮标题/悬浮标题.vue";
 import { useDebounceFn } from "@vueuse/core";
 import { 会话的状态存储 } from "@/状态存储";
 import { storeToRefs } from "pinia";
