@@ -5,7 +5,7 @@
         <MyChatList />
       </div>
     </div>
-    <div>
+    <div class="">
       <MyChatTextArea />
     </div>
   </div>

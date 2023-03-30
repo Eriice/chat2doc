@@ -30,5 +30,9 @@ export default defineConfig({
       "@": fileURLToPath(new URL("./src", import.meta.url)),
       "@组件": fileURLToPath(new URL("./src/组件", import.meta.url))
     }
+  },
+  server: {
+    port: 5173,
+    host: "0.0.0.0"
   }
 });

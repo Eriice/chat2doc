@@ -1,5 +1,5 @@
 <template>
-  <footer class="relative px-4 py-6">
+  <footer class="sticky inset-x-0 bottom-0 overflow-hidden px-4 py-6">
     <div class="flex items-end gap-3">
       <NInput
         ref="输入框的引用"
