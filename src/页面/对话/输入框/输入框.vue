@@ -24,24 +24,38 @@
 <script setup lang="ts">
 import { NButton } from "naive-ui";
 import { Icon } from "@iconify/vue";
-import { ref } from "vue";
+import { ref, toRaw } from "vue";
 import { 会话的状态存储 } from "@/状态存储";
 import { 侦听事件源url } from "@/接口";
 import { storeToRefs } from "pinia";
+import { SSE } from "sse.js";
 
 const 提示语 = ref<string>("");
 
-const { 新增用户提问, 新增ai回复 } = 会话的状态存储();
-const { 缓存的ai回复 } = storeToRefs(会话的状态存储());
+const { 新增用户提问, 新增ai回复, 当前会话id } = 会话的状态存储();
+const { 缓存的ai回复, 当前对话列表 } = storeToRefs(会话的状态存储());
 
 const 处理发送对话 = async () => {
   if (缓存的ai回复.value.状态 !== "空闲") return;
 
   新增用户提问(提示语.value);
   缓存的ai回复.value.状态 = "等待回复";
-
-  const 事件源 = new EventSource(`${侦听事件源url}?问题=${encodeURIComponent(提示语.value)}`);
   提示语.value = "";
+
+  const 对话上下文列表 = toRaw(当前对话列表.value) ?? [];
+  const 对话上下文 = 对话上下文列表.map(item => {
+    return {
+      角色: item.角色,
+      // OpenAI推荐使用空格替换换行符以获得最佳结果
+      内容: item.内容.replace(/\n/g, " ")
+    };
+  });
+
+  // const 事件源 = new EventSource(`${侦听事件源url}`);
+  var 事件源 = new SSE(侦听事件源url, {
+    headers: { "Content-Type": "text/plain" },
+    payload: JSON.stringify(对话上下文)
+  });
 
   事件源.addEventListener("open", () => {
     缓存的ai回复.value.内容 = "";
@@ -49,8 +63,8 @@ const 处理发送对话 = async () => {
 
   // 监听自定义的"done" 事件
   事件源.addEventListener("引用", event => {
-    console.log("所有引用内容");
-    const data = JSON.parse(event.data);
+    const dataEvent = event as unknown as MessageEvent<any>;
+    const data = JSON.parse(dataEvent.data);
     缓存的ai回复.value.参考资料 = data;
   });
 
@@ -65,7 +79,8 @@ const 处理发送对话 = async () => {
   });
 
   事件源.addEventListener("message", event => {
-    const data = JSON.parse(event.data);
+    const dataEvent = event as unknown as MessageEvent<any>;
+    const data = JSON.parse(dataEvent.data);
     缓存的ai回复.value.内容 = 缓存的ai回复.value.内容 + data;
     缓存的ai回复.value.状态 = "正在回复";
   });
@@ -79,6 +94,8 @@ const 处理发送对话 = async () => {
     console.error("发生错误:", event);
     事件源.close();
   });
+
+  事件源.stream();
 };
 </script>
 
