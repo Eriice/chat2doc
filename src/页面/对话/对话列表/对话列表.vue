@@ -1,6 +1,6 @@
 <template>
   <main class="flex flex-1 flex-col gap-4 p-4">
-    <MyChatListItem v-for="item in 当前对话列表" :key="item.id" :对话="item" />
+    <MyChatListItem v-for="item in 当前会话?.对话列表" :key="item.id" :对话="item" />
     <MyChatListItem v-show="缓存的ai回复.状态 !== '空闲'" ref="缓存ai回复的引用" :对话="回复缓存" />
   </main>
 </template>
@@ -12,7 +12,7 @@ import MyChatListItem from "./对话列表项.vue";
 import { ref, watch } from "vue";
 import { nanoid } from "nanoid";
 
-const { 当前对话列表, 缓存的ai回复 } = storeToRefs(会话的状态存储());
+const { 当前会话, 缓存的ai回复 } = storeToRefs(会话的状态存储());
 
 const 回复缓存 = ref<N会话.I对话>({
   id: nanoid(),

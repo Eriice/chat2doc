@@ -13,10 +13,9 @@ export const 会话的状态存储 = defineStore(状态存储枚举.对话管理
   const 当前会话id = useStorage<string | null>(当前会话id的本地存储, null);
   const 缓存的ai回复 = ref<Iai回复缓存>({ 内容: "", 状态: "空闲", 参考资料: [] });
 
-  const 当前对话列表 = computed(() => {
+  const 当前会话 = computed(() => {
     const 当前对话管理 = 会话列表.value.find(item => item.id === 当前会话id.value) || null;
-    const 列表 = 当前对话管理?.对话列表;
-    return 列表 || null;
+    return 当前对话管理;
   });
 
   /* 会话的增删改查开始 */
@@ -28,8 +27,10 @@ export const 会话的状态存储 = defineStore(状态存储枚举.对话管理
     当前会话id.value = id;
   };
 
-  const 新增会话 = () => {
+  const 新增会话 = (会话标题: string, 问题背景: N会话.I问题背景) => {
     const 默认新增的会话 = 获取默认会话();
+    默认新增的会话.标题 = 会话标题;
+    默认新增的会话.问题背景 = 问题背景;
     会话列表.value.push(默认新增的会话);
     // 切换到新增的会话中
     切换当前会话(默认新增的会话.id);
@@ -49,6 +50,10 @@ export const 会话的状态存储 = defineStore(状态存储枚举.对话管理
       待切换id = 会话列表.value[被删idx].id;
     }
     切换当前会话(待切换id);
+  };
+
+  const 修改上一次对话id = (id: string) => {
+    当前会话.value!.上一次对话id = id;
   };
 
   const 清空会话 = () => {
@@ -97,10 +102,11 @@ export const 会话的状态存储 = defineStore(状态存储枚举.对话管理
   return {
     会话列表,
     当前会话id,
-    当前对话列表,
+    当前会话,
     缓存的ai回复,
     切换当前会话,
     新增会话,
+    修改上一次对话id,
     删除会话,
     清空会话,
     新增用户提问,

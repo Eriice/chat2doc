@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, { AxiosProgressEvent } from "axios";
 
 interface 响应 {
   id: string;
@@ -18,9 +18,31 @@ const config = {
   }
 };
 
-export const 对话_api = async (问题: string) => {
+export type I内容块 =
+  | {
+      类型: "参考资料";
+      数据: N会话.I参考资料[];
+    }
+  | {
+      类型: "回复" | "对话id";
+      数据: string;
+    };
+
+export const 对话_api = async (请求参数: {
+  用户提问: string;
+  上次对话id?: string;
+  问题背景: N会话.I问题背景;
+  处理器?: (处理事件: AxiosProgressEvent) => void;
+}) => {
+  const { 用户提问, 上次对话id, 问题背景, 处理器 } = 请求参数;
   const 响应 = axios
-    .post<响应>("https://thcgyowjhxyudcanneoi.functions.supabase.co/hello-world", { 问题 }, config)
+    .post<响应>(
+      "/api/chat",
+      { 用户提问, 上次对话id, 问题背景 },
+      {
+        onDownloadProgress: 处理器
+      }
+    )
     .then(响应体 => {
       return 响应体.data;
     })
@@ -30,7 +52,4 @@ export const 对话_api = async (问题: string) => {
   return 响应;
 };
 
-// export const 侦听事件源 = (回调函数: (token: string) => void) => {
-
-// };
-export const 侦听事件源url = `https://thcgyowjhxyudcanneoi.functions.supabase.co/hello-world`;
+export const 侦听事件源url = `https://thcgyowjhxyudcanneoi.functions.supabase.co/chat`;

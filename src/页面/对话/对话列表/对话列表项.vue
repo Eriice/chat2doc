@@ -12,7 +12,8 @@
           </div>
         </div>
       </div>
-      <div v-if="对话.角色 == 'ai'" class="flex flex-col gap-2">
+      <!-- 如果是非chatgpt，则附带参考资料 -->
+      <div v-if="对话.角色 == 'ai' && 当前会话?.问题背景 !== 'chatgpt'" class="flex flex-col gap-2">
         <div v-for="item in 对话.参考资料" :key="item.id" class="rounded-md border border-dashed p-4">
           <div class="mb-2 flex justify-between">
             <div class="text-base font-bold text-gray-600">参考文档：{{ item.标题 }}</div>
@@ -24,7 +25,7 @@
             /></a>
           </div>
 
-          <div class="text-sm text-gray-500">{{ item.内容 }}</div>
+          <div class="text-sm text-gray-500">{{ item.中文内容 }}</div>
         </div>
       </div>
     </div>
@@ -34,6 +35,10 @@
 <script setup lang="ts">
 import { Icon } from "@iconify/vue";
 import MyText from "./文本框.vue";
+
+import { 会话的状态存储 } from "@/状态存储";
+import { storeToRefs } from "pinia";
+const { 当前会话 } = storeToRefs(会话的状态存储());
 
 type I组件属性 = {
   对话: N会话.I对话;

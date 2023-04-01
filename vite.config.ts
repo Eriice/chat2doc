@@ -32,7 +32,17 @@ export default defineConfig({
     }
   },
   server: {
-    port: 5173,
-    host: "0.0.0.0"
+    // 本地访问端口
+    port: 9527,
+    // 手机调试
+    host: "0.0.0.0",
+    // 设置接口代理
+    proxy: {
+      "/api": {
+        target: "http://127.0.0.1:9528/",
+        changeOrigin: true,
+        rewrite: path => path.replace("/api/", "/")
+      }
+    }
   }
 });
