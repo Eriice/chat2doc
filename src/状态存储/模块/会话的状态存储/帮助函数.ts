@@ -4,7 +4,7 @@ export const 获取默认会话 = (): N会话.I会话 => {
   const id = nanoid();
   return {
     id,
-    问题背景: null,
+    问题背景: "chatgpt",
     标题: "准备对话...",
     对话列表: [],
     创建时间: new Date().toISOString()

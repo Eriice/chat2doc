@@ -81,7 +81,7 @@ export const 会话的状态存储 = defineStore(状态存储枚举.对话管理
     // 若不存在会话，则新增一个会话
     let id = 当前会话id.value;
     if (id === null) {
-      id = 新增会话();
+      id = 新增会话("ChatGPT 3.5", "chatgpt");
     }
     // 若存在会话，则新增对话，并且返回对话id
     const 会话 = _根据id获取会话(id)!;
