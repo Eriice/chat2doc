@@ -33,9 +33,7 @@ serve(async req => {
   }
 
   const { 用户提问, 历史对话, 问题背景 = "chatgpt" } = (await req.json()) as I请求体;
-  console.log("用户提问", 用户提问, 历史对话, 问题背景);
   const 参考资料列表 = await 向量匹配(用户提问, 问题背景);
-  console.log("参考资料列表", 参考资料列表.length);
   const 流回复 = await ChatGPT流回复({ 用户提问, 历史对话, 问题背景 });
 
   const encoder = new TextEncoder();
@@ -92,7 +90,7 @@ const 向量匹配 = async (用户提问, 问题背景: I问题背景) => {
     } = await OpenAI向量化(用户提问);
     // 2. 通过嵌入向量(embedding)寻找匹配内容
     const { data: 参考资料列表, error: 错误 } = await 向量搜索(问题背景, 嵌入向量);
-    console.time("向量匹配");
+    console.timeEnd("向量匹配");
     return 参考资料列表 as I向量匹配响应[];
   }
   return [];

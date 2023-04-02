@@ -23,7 +23,7 @@
       <div class="flex flex-col">
         <img
           class="mb-1 h-16 w-16"
-          src="https://6169-aihub-7g6qfy5o038ec167-1306429767.tcb.qcloud.la/qrcode/qrcode.png?sign=16e8e0441c199a0ec2b2222ecf57e75b&t=1680278176"
+          src="https://6169-aihub-7g6qfy5o038ec167-1306429767.tcb.qcloud.la/qrcode/%E7%BE%A4%E8%81%8A%E4%BA%8C%E7%BB%B4%E7%A0%81.png?sign=69fdde24e504713be13b9382d60e0461&t=1680427892"
         />
         <div class="text-xs text-gray-300">AI 交流群</div>
       </div>
