@@ -6,6 +6,8 @@
 
 ## 🚀 项目介绍
 
+![项目示例](https://github.com/Eriice/chat2doc/blob/main/public/preview.jpg)
+
 Chat2Doc 是一个旨在优化 ChatGPT 回答的项目。
 
 项目流程是：当用户提问时，会匹配问题的最新文档，让 ChatGPT 参考文档进行回复，并且给出参考链接。
@@ -61,9 +63,9 @@ supabase functions deploy chat --no-verify-jwt --project-ref [你的项目 proje
 
 ## 沟通交流
 
-分别是我的个人公众号和我加入的AI群聊。
+分别是我的个人公众号和我加入的 AI 群聊。
 
-会谈谈这个项目，谈谈中文编程，谈谈毒瘤的DDD、微服务、中台。
+会谈谈这个项目，谈谈中文编程，谈谈毒瘤的 DDD、微服务、中台。
 
 欢迎沟通交流。
 
@@ -71,7 +73,6 @@ supabase functions deploy chat --no-verify-jwt --project-ref [你的项目 proje
     <img width="200" height="200" src="https://github.com/Eriice/chat2doc/blob/main/public/%E5%85%AC%E4%BC%97%E5%8F%B7%E4%BA%8C%E7%BB%B4%E7%A0%81.png" alt="个人公众号" />
     <img width="200" height="200" src="https://github.com/Eriice/chat2doc/blob/main/public/%E7%BE%A4%E8%81%8A%E4%BA%8C%E7%BB%B4%E7%A0%81.png" alt="我加入的大湾群群聊" />
 </div>
-
 
 ## Star 趋势
 
