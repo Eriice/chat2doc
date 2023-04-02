@@ -20,9 +20,13 @@ Chat2Doc 是一个旨在优化 ChatGPT 回答的项目。
 
 ## 🔥 项目特点
 
-为了降低阅读源码、修改源码的障碍，让尽可能多的人参与到项目的维护。
+为了降低阅读源码、修改源码的障碍，让所有人参与到项目中。
 
 本项目采用了中文编写文件和代码，使用中文化的文档路径、函数名、变量名等，以促进中文编程的普及。
+
+发现变量命名有问题？👉 克隆、修改、推送。
+
+发现函数实现不优雅？👉 克隆、修改、推送。
 
 ## 项目启动
 
@@ -71,7 +75,6 @@ supabase functions deploy chat --no-verify-jwt --project-ref [你的项目 proje
     <img width="200" height="200" src="https://github.com/Eriice/chat2doc/blob/main/public/%E5%85%AC%E4%BC%97%E5%8F%B7%E4%BA%8C%E7%BB%B4%E7%A0%81.png" alt="个人公众号" />
     <img width="200" height="200" src="https://github.com/Eriice/chat2doc/blob/main/public/%E7%BE%A4%E8%81%8A%E4%BA%8C%E7%BB%B4%E7%A0%81.png" alt="我加入的大湾群群聊" />
 </div>
-
 
 ## Star 趋势
 
