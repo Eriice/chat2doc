@@ -8,6 +8,8 @@
 
 ![项目示例](https://github.com/Eriice/chat2doc/blob/main/public/preview.jpg)
 
+[访问地址](http://chat.eriice.com/)
+
 Chat2Doc 是一个旨在优化 ChatGPT 回答的项目。
 
 项目流程是：当用户提问时，会匹配问题的最新文档，让 ChatGPT 参考文档进行回复，并且给出参考链接。
