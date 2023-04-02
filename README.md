@@ -61,6 +61,18 @@ supabase functions deploy chat --no-verify-jwt --project-ref [你的项目 proje
 
 ## 沟通交流
 
+分别是我的个人公众号和我加入的AI群聊。
+
+会谈谈这个项目，谈谈中文编程，谈谈毒瘤的DDD、微服务、中台。
+
+欢迎沟通交流。
+
+<div class="flex">
+    <img width="200" height="200" src="https://github.com/Eriice/chat2doc/blob/main/public/%E5%85%AC%E4%BC%97%E5%8F%B7%E4%BA%8C%E7%BB%B4%E7%A0%81.png" alt="个人公众号" />
+    <img width="200" height="200" src="https://github.com/Eriice/chat2doc/blob/main/public/%E7%BE%A4%E8%81%8A%E4%BA%8C%E7%BB%B4%E7%A0%81.png" alt="我加入的大湾群群聊" />
+</div>
+
+
 ## Star 趋势
 
 [![Star History Chart](https://api.star-history.com/svg?repos=Eriice/chat2doc&type=Date)](https://star-history.com/#Eriice/chat2doc&Date)
